@@ -177,6 +177,66 @@ paths:
             type: string
         '404':
           description: File could not be opened or does not exist
+
+  '/datasetEnqueue/{dataset}':
+    get:
+      summary: Enqueue of a dataset via ISGENQ
+      tags:
+        - Dataset
+      parameters:
+        - name: dataset
+          in: path
+          description: Cache results for future
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: object
+            properties:
+              records:
+                type: array
+                items:
+                  type: string
+        '404':
+          description: Enqueue could not be obtained
+    post:
+      summary: Empty at present
+      tags:
+        - Dataset
+      parameters:
+        - name: dataset
+          in: path
+          description: Cache results for future
+          required: true
+          type: string
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              records:
+                type: array
+                items:
+                  type: string
+      consumes:
+        - application/json
+      produces:
+        - text/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: string
+        '404':
+          description: File could not be opened or does not exist
+
+
+
   '/VSAMdatasetContents/{dataset}':
     get:
       summary: Get a VSAM dataset
